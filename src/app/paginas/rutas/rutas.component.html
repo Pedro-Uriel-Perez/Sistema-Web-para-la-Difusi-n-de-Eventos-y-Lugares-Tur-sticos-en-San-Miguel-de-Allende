@@ -1,0 +1,202 @@
+<div class="rutas">
+  <!-- Banner de la página -->
+  <section class="banner-rutas">
+    <div class="contenedor">
+      <h1>Rutas y Tours en San Miguel de Allende</h1>
+      <p>Explora la ciudad y sus alrededores con nuestras rutas especializadas</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="seccion-filtros">
+    <div class="contenedor">
+      <div class="filtros">
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'todos'"
+          (click)="filtrarPorTipo('todos')"
+        >
+          Todos
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'a pie'"
+          (click)="filtrarPorTipo('a pie')"
+        >
+          A Pie
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'ciclismo'"
+          (click)="filtrarPorTipo('ciclismo')"
+        >
+          Ciclismo
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'gastronómico'"
+          (click)="filtrarPorTipo('gastronómico')"
+        >
+          Gastronómico
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'aventura'"
+          (click)="filtrarPorTipo('aventura')"
+        >
+          Aventura
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'cultural'"
+          (click)="filtrarPorTipo('cultural')"
+        >
+          Cultural
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="tipoSeleccionado === 'ecoturismo'"
+          (click)="filtrarPorTipo('ecoturismo')"
+        >
+          Ecoturismo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda específica -->
+  <section class="seccion-busqueda-rutas">
+    <div class="contenedor">
+      <div class="barra-busqueda">
+        <input 
+          type="text" 
+          placeholder="Buscar rutas y tours..."
+          [(ngModel)]="busquedaRuta"
+          (input)="buscarRutas()"
+        >
+        <span class="icono-busqueda">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de rutas -->
+  <section class="lista-rutas">
+    <div class="contenedor">
+      <div class="grid-rutas">
+        <div class="tarjeta-ruta" *ngFor="let ruta of rutasFiltradas">
+          <div class="imagen-ruta">
+            <img [src]="ruta.imagen" [alt]="ruta.nombre">
+            <div class="tipo-tag">{{ ruta.tipo }}</div>
+            <div class="precio-tag">${{ ruta.precio }}</div>
+            <div class="dificultad-badge" [style.background-color]="obtenerColorDificultad(ruta.dificultad)">
+              {{ ruta.dificultad }}
+            </div>
+          </div>
+          
+          <div class="contenido-ruta">
+            <div class="header-ruta">
+              <h3>{{ ruta.nombre }}</h3>
+              <div class="disponibilidad" [class.disponible]="ruta.disponible" [class.no-disponible]="!ruta.disponible">
+                {{ ruta.disponible ? 'Disponible' : 'No disponible' }}
+              </div>
+            </div>
+            
+            <p class="descripcion">{{ ruta.descripcion }}</p>
+            
+            <!-- Información básica -->
+            <div class="info-basica">
+              <div class="info-item">
+                <span class="icono">⏱️</span>
+                <span>{{ ruta.duracion }}</span>
+              </div>
+              <div class="info-item">
+                <span class="icono">📏</span>
+                <span>{{ ruta.distancia }}</span>
+              </div>
+              <div class="info-item">
+                <span class="icono">👥</span>
+                <span>{{ ruta.operador }}</span>
+              </div>
+            </div>
+
+            <!-- Ruta -->
+            <div class="ruta-path">
+              <div class="punto-inicio">
+                <span class="icono">🚩</span>
+                <span>{{ ruta.puntoInicio }}</span>
+              </div>
+              <div class="flecha">→</div>
+              <div class="punto-final">
+                <span class="icono">🏁</span>
+                <span>{{ ruta.puntoFinal }}</span>
+              </div>
+            </div>
+
+            <!-- Paradas principales -->
+            <div class="paradas-principales">
+              <h4>Paradas principales:</h4>
+              <div class="lista-paradas">
+                <span class="parada" *ngFor="let parada of ruta.paradas.slice(0, 3)">
+                  {{ parada }}
+                </span>
+                <span class="mas-paradas" *ngIf="ruta.paradas.length > 3">
+                  +{{ ruta.paradas.length - 3 }} más
+                </span>
+              </div>
+            </div>
+
+            <!-- Lo que incluye -->
+            <div class="incluye">
+              <h4>Incluye:</h4>
+              <ul>
+                <li *ngFor="let item of ruta.incluye.slice(0, 2)">{{ item }}</li>
+                <li *ngIf="ruta.incluye.length > 2" class="mas-items">
+                  +{{ ruta.incluye.length - 2 }} servicios más
+                </li>
+              </ul>
+            </div>
+
+            <!-- Horarios -->
+            <div class="horarios-ruta">
+              <span class="icono">🕒</span>
+              <span>{{ ruta.horarios }}</span>
+            </div>
+
+            <!-- Características adicionales -->
+            <div class="caracteristicas-ruta">
+              <div class="caracteristica" *ngIf="ruta.requiereReservacion">
+                <span class="icono-caracteristica">📝</span>
+                <span>Reservación requerida</span>
+              </div>
+              <div class="caracteristica" *ngIf="!ruta.requiereReservacion">
+                <span class="icono-caracteristica">✅</span>
+                <span>Sin reservación</span>
+              </div>
+            </div>
+            
+            <div class="acciones-ruta">
+              <button class="btn-ver-mas" (click)="verDetalles(ruta)">
+                Ver Detalles
+              </button>
+              <button class="btn-contactar" (click)="contactarOperador(ruta)">
+                📞 Contactar
+              </button>
+              <button class="btn-reservar" (click)="reservar(ruta)" [disabled]="!ruta.disponible">
+                🎫 {{ ruta.requiereReservacion ? 'Reservar' : 'Info' }}
+              </button>
+              <button class="btn-compartir" (click)="compartirRuta(ruta)">
+                📤 Compartir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="rutasFiltradas.length === 0">
+        <h3>No se encontraron rutas</h3>
+        <p>Intenta con otros términos de búsqueda o tipos de tour.</p>
+      </div>
+    </div>
+  </section>
+</div>

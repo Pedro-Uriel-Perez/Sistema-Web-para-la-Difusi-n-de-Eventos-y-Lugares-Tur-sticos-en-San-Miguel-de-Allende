@@ -1,0 +1,385 @@
+.restaurantes {
+  min-height: 100vh;
+}
+
+/* Banner */
+.banner-restaurantes {
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.banner-restaurantes h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.banner-restaurantes p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Contenedor general */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Filtros */
+.seccion-filtros {
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #8B4513;
+  background: white;
+  color: #8B4513;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: #8B4513;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Búsqueda */
+.seccion-busqueda-restaurantes {
+  padding: 2rem 0;
+  background: white;
+}
+
+.barra-busqueda {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.barra-busqueda input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.barra-busqueda input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.icono-busqueda {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Lista de restaurantes */
+.lista-restaurantes {
+  padding: 3rem 0;
+}
+
+.grid-restaurantes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+/* Tarjetas de restaurantes */
+.tarjeta-restaurante {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  border: 1px solid #eee;
+}
+
+.tarjeta-restaurante:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Imagen del restaurante */
+.imagen-restaurante {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagen-restaurante img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.tarjeta-restaurante:hover .imagen-restaurante img {
+  transform: scale(1.05);
+}
+
+.categoria-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(139, 69, 19, 0.9);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.precio-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(210, 105, 30, 0.95);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Contenido del restaurante */
+.contenido-restaurante {
+  padding: 1.5rem;
+}
+
+.contenido-restaurante h3 {
+  color: #333;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.descripcion {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Información del restaurante */
+.info-restaurante {
+  margin-bottom: 1rem;
+}
+
+.info-restaurante > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.info-restaurante .icono {
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.ubicacion,
+.horarios,
+.telefono {
+  color: #666;
+}
+
+/* Características */
+.caracteristicas {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.caracteristica {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.icono-caracteristica {
+  margin-right: 0.3rem;
+}
+
+/* Especialidades */
+.especialidades {
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+}
+
+.especialidades h4 {
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.lista-especialidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.especialidad {
+  background: #8B4513;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Calificación */
+.calificacion-restaurante {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.estrellas {
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+.numero-calificacion {
+  color: #666;
+  font-weight: 600;
+}
+
+/* Acciones */
+.acciones-restaurante {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-ver-mas,
+.btn-llamar,
+.btn-direcciones {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  font-size: 0.85rem;
+}
+
+.btn-ver-mas {
+  background: #8B4513;
+  color: white;
+}
+
+.btn-ver-mas:hover {
+  background: #D2691E;
+}
+
+.btn-llamar {
+  background: #28a745;
+  color: white;
+}
+
+.btn-llamar:hover {
+  background: #218838;
+}
+
+.btn-direcciones {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-direcciones:hover {
+  background: #5a6268;
+}
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.sin-resultados h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner-restaurantes h1 {
+    font-size: 2rem;
+  }
+  
+  .filtros {
+    gap: 0.5rem;
+  }
+  
+  .filtro-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .grid-restaurantes {
+    grid-template-columns: 1fr;
+  }
+  
+  .acciones-restaurante {
+    flex-direction: column;
+  }
+  
+  .btn-ver-mas,
+  .btn-llamar,
+  .btn-direcciones {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-restaurante {
+    margin: 0 0.5rem;
+  }
+  
+  .contenido-restaurante {
+    padding: 1rem;
+  }
+  
+  .banner-restaurantes {
+    padding: 2rem 0;
+  }
+  
+  .caracteristicas {
+    gap: 0.5rem;
+  }
+  
+  .lista-especialidades {
+    gap: 0.3rem;
+  }
+}

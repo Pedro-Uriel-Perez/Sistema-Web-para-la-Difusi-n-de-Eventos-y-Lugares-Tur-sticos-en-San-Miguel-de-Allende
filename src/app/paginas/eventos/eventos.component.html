@@ -1,0 +1,176 @@
+<div class="eventos">
+  <!-- Banner de la página -->
+  <section class="banner-eventos">
+    <div class="contenedor">
+      <h1>Eventos en San Miguel de Allende</h1>
+      <p>Vive la cultura, tradición y arte de nuestra ciudad mágica</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="seccion-filtros">
+    <div class="contenedor">
+      <div class="filtros">
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'todos'"
+          (click)="filtrarPorCategoria('todos')"
+        >
+          Todos
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'música'"
+          (click)="filtrarPorCategoria('música')"
+        >
+          Música
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'cultural'"
+          (click)="filtrarPorCategoria('cultural')"
+        >
+          Cultural
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'arte'"
+          (click)="filtrarPorCategoria('arte')"
+        >
+          Arte
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'gastronomía'"
+          (click)="filtrarPorCategoria('gastronomía')"
+        >
+          Gastronomía
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'religioso'"
+          (click)="filtrarPorCategoria('religioso')"
+        >
+          Religioso
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'turístico'"
+          (click)="filtrarPorCategoria('turístico')"
+        >
+          Turístico
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda específica -->
+  <section class="seccion-busqueda-eventos">
+    <div class="contenedor">
+      <div class="barra-busqueda">
+        <input 
+          type="text" 
+          placeholder="Buscar eventos..."
+          [(ngModel)]="busquedaEvento"
+          (input)="buscarEventos()"
+        >
+        <span class="icono-busqueda">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de eventos -->
+  <section class="lista-eventos">
+    <div class="contenedor">
+      <div class="grid-eventos">
+        <div class="tarjeta-evento" *ngFor="let evento of eventosFiltrados">
+          <div class="imagen-evento">
+            <img [src]="evento.imagen" [alt]="evento.nombre">
+            <div class="categoria-tag">{{ evento.categoria }}</div>
+            <div class="fecha-tag">
+              {{ formatearFecha(evento.fechaInicio) }}
+              <span *ngIf="evento.fechaInicio !== evento.fechaFin">
+                - {{ formatearFecha(evento.fechaFin) }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="contenido-evento">
+            <div class="header-evento">
+              <h3>{{ evento.nombre }}</h3>
+              <div class="precio-evento">
+                <span *ngIf="evento.esGratuito" class="gratuito">GRATIS</span>
+                <span *ngIf="!evento.esGratuito" class="con-precio">${{ evento.precio }}</span>
+              </div>
+            </div>
+            
+            <p class="descripcion">{{ evento.descripcion }}</p>
+            
+            <div class="info-evento">
+              <div class="fecha-horario">
+                <div class="fecha">
+                  <span class="icono">📅</span>
+                  <span>{{ formatearFecha(evento.fechaInicio) }}</span>
+                  <span *ngIf="evento.fechaInicio !== evento.fechaFin">
+                    - {{ formatearFecha(evento.fechaFin) }}
+                  </span>
+                </div>
+                <div class="horario">
+                  <span class="icono">🕒</span>
+                  <span>{{ evento.horario }}</span>
+                </div>
+              </div>
+              
+              <div class="ubicacion">
+                <span class="icono">📍</span>
+                <span>{{ evento.ubicacion }}</span>
+              </div>
+              
+              <div class="organizador">
+                <span class="icono">👥</span>
+                <span>{{ evento.organizador }}</span>
+              </div>
+            </div>
+
+            <!-- Características del evento -->
+            <div class="caracteristicas-evento">
+              <div class="caracteristica" *ngIf="evento.requiereReservacion">
+                <span class="icono-caracteristica">📝</span>
+                <span>Reservación requerida</span>
+              </div>
+              <div class="caracteristica" *ngIf="evento.esRecurrente">
+                <span class="icono-caracteristica">🔄</span>
+                <span>Evento recurrente</span>
+              </div>
+              <div class="caracteristica">
+                <span class="icono-caracteristica">👥</span>
+                <span>{{ evento.capacidad }}</span>
+              </div>
+            </div>
+            
+            <div class="acciones-evento">
+              <button class="btn-ver-mas" (click)="verDetalles(evento)">
+                Ver Detalles
+              </button>
+              <button class="btn-contactar" (click)="contactarOrganizador(evento)">
+                📞 Contactar
+              </button>
+              <button class="btn-ubicacion" (click)="verUbicacion(evento)">
+                📍 Ubicación
+              </button>
+              <button class="btn-reservar" (click)="reservar(evento)">
+                🎫 {{ evento.requiereReservacion ? 'Reservar' : 'Info' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="eventosFiltrados.length === 0">
+        <h3>No se encontraron eventos</h3>
+        <p>Intenta con otros términos de búsqueda o categorías.</p>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,162 @@
+<div class="restaurantes">
+  <!-- Banner de la página -->
+  <section class="banner-restaurantes">
+    <div class="contenedor">
+      <h1>Restaurantes en San Miguel de Allende</h1>
+      <p>Descubre los sabores únicos de nuestra ciudad colonial</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="seccion-filtros">
+    <div class="contenedor">
+      <div class="filtros">
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'todos'"
+          (click)="filtrarPorCategoria('todos')"
+        >
+          Todos
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'mexicana'"
+          (click)="filtrarPorCategoria('mexicana')"
+        >
+          Mexicana Gourmet
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'tradicional'"
+          (click)="filtrarPorCategoria('tradicional')"
+        >
+          Tradicional
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'internacional'"
+          (click)="filtrarPorCategoria('internacional')"
+        >
+          Internacional
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'alta-cocina'"
+          (click)="filtrarPorCategoria('alta-cocina')"
+        >
+          Alta Cocina
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'cafeteria'"
+          (click)="filtrarPorCategoria('cafeteria')"
+        >
+          Cafeterías
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda específica -->
+  <section class="seccion-busqueda-restaurantes">
+    <div class="contenedor">
+      <div class="barra-busqueda">
+        <input 
+          type="text" 
+          placeholder="Buscar restaurantes..."
+          [(ngModel)]="busquedaRestaurante"
+          (input)="buscarRestaurantes()"
+        >
+        <span class="icono-busqueda">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de restaurantes -->
+  <section class="lista-restaurantes">
+    <div class="contenedor">
+      <div class="grid-restaurantes">
+        <div class="tarjeta-restaurante" *ngFor="let restaurante of restaurantesFiltrados">
+          <div class="imagen-restaurante">
+            <img [src]="restaurante.imagen" [alt]="restaurante.nombre">
+            <div class="categoria-tag">{{ restaurante.categoria }}</div>
+            <div class="precio-tag">${{ restaurante.precioPromedio }} promedio</div>
+          </div>
+          
+          <div class="contenido-restaurante">
+            <h3>{{ restaurante.nombre }}</h3>
+            <p class="descripcion">{{ restaurante.descripcion }}</p>
+            
+            <div class="info-restaurante">
+              <div class="ubicacion">
+                <span class="icono">📍</span>
+                <span>{{ restaurante.ubicacion }}</span>
+              </div>
+              
+              <div class="horarios">
+                <span class="icono">🕒</span>
+                <span>{{ restaurante.horarios }}</span>
+              </div>
+              
+              <div class="telefono" *ngIf="restaurante.telefono !== 'Sin teléfono fijo'">
+                <span class="icono">📞</span>
+                <span>{{ restaurante.telefono }}</span>
+              </div>
+            </div>
+
+            <!-- Características del restaurante -->
+            <div class="caracteristicas">
+              <div class="caracteristica" *ngIf="restaurante.tieneTerraza">
+                <span class="icono-caracteristica">🌿</span>
+                <span>Terraza</span>
+              </div>
+              <div class="caracteristica" *ngIf="restaurante.aceptaTarjeta">
+                <span class="icono-caracteristica">💳</span>
+                <span>Acepta tarjeta</span>
+              </div>
+              <div class="caracteristica" *ngIf="restaurante.tieneEstacionamiento">
+                <span class="icono-caracteristica">🚗</span>
+                <span>Estacionamiento</span>
+              </div>
+            </div>
+
+            <!-- Especialidades -->
+            <div class="especialidades">
+              <h4>Especialidades:</h4>
+              <div class="lista-especialidades">
+                <span class="especialidad" *ngFor="let especialidad of restaurante.especialidades">
+                  {{ especialidad }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="calificacion-restaurante">
+              <div class="estrellas">
+                <span *ngFor="let estrella of obtenerEstrellas(restaurante.calificacion)">{{ estrella }}</span>
+              </div>
+              <span class="numero-calificacion">{{ restaurante.calificacion }}/5</span>
+            </div>
+            
+            <div class="acciones-restaurante">
+              <button class="btn-ver-mas" (click)="verDetalles(restaurante)">
+                Ver Detalles
+              </button>
+              <button class="btn-llamar" (click)="llamarRestaurante(restaurante)">
+                📞 Llamar
+              </button>
+              <button class="btn-direcciones" (click)="verUbicacion(restaurante)">
+                📍 Ubicación
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="restaurantesFiltrados.length === 0">
+        <h3>No se encontraron restaurantes</h3>
+        <p>Intenta con otros términos de búsqueda o categorías.</p>
+      </div>
+    </div>
+  </section>
+</div>

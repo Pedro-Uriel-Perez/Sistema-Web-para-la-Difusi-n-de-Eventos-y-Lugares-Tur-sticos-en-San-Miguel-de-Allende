@@ -1,0 +1,389 @@
+.rutas {
+  min-height: 100vh;
+}
+
+/* Banner */
+.banner-rutas {
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.banner-rutas h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.banner-rutas p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Contenedor general */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Filtros */
+.seccion-filtros {
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  padding: 0.7rem 1.2rem;
+  border: 2px solid #8B4513;
+  background: white;
+  color: #8B4513;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: #8B4513;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Búsqueda */
+.seccion-busqueda-rutas {
+  padding: 2rem 0;
+  background: white;
+}
+
+.barra-busqueda {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.barra-busqueda input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.barra-busqueda input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.icono-busqueda {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Lista de rutas */
+.lista-rutas {
+  padding: 3rem 0;
+}
+
+.grid-rutas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 2rem;
+}
+
+/* Tarjetas de rutas */
+.tarjeta-ruta {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  border: 1px solid #eee;
+}
+
+.tarjeta-ruta:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Imagen de la ruta */
+.imagen-ruta {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagen-ruta img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.tarjeta-ruta:hover .imagen-ruta img {
+  transform: scale(1.05);
+}
+
+.tipo-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(139, 69, 19, 0.9);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.precio-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(210, 105, 30, 0.95);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.dificultad-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Contenido de la ruta */
+.contenido-ruta {
+  padding: 1.5rem;
+}
+
+.header-ruta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+/* Disponibilidad */
+.disponibilidad {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+.disponibilidad.disponible {
+  background: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+}
+.disponibilidad.no-disponible {
+  background: rgba(231, 76, 60, 0.15);
+  color: #c0392b;
+}
+
+/* Descripción */
+.descripcion {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Información básica */
+.info-basica {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+.info-item .icono {
+  font-size: 1rem;
+}
+
+/* Ruta (inicio y final) */
+.ruta-path {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+.ruta-path .icono {
+  font-size: 1rem;
+}
+.flecha {
+  color: #8B4513;
+  font-weight: bold;
+}
+
+/* Paradas principales */
+.paradas-principales {
+  margin-bottom: 1rem;
+}
+.paradas-principales h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #8B4513;
+}
+.lista-paradas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.parada {
+  background: #f1f1f1;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+.mas-paradas {
+  background: #e0e0e0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Incluye */
+.incluye {
+  margin-bottom: 1rem;
+}
+.incluye h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #8B4513;
+}
+.incluye ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+.incluye li {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+.mas-items {
+  color: #777;
+  font-style: italic;
+}
+
+/* Horarios */
+.horarios-ruta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Características adicionales */
+.caracteristicas-ruta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.caracteristica {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  background: #f8f8f8;
+  color: #444;
+}
+.icono-caracteristica {
+  font-size: 1rem;
+}
+
+/* Botones de acciones */
+.acciones-ruta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.acciones-ruta button {
+  flex: 1 1 calc(50% - 0.5rem);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-ver-mas {
+  background: #eee;
+  color: #333;
+}
+.btn-ver-mas:hover {
+  background: #ddd;
+}
+.btn-contactar {
+  background: #27ae60;
+  color: white;
+}
+.btn-contactar:hover {
+  background: #1e8449;
+}
+.btn-reservar {
+  background: #8B4513;
+  color: white;
+}
+.btn-reservar:hover:not(:disabled) {
+  background: #6e3610;
+}
+.btn-reservar:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.btn-compartir {
+  background: #3498db;
+  color: white;
+}
+.btn-compartir:hover {
+  background: #217dbb;
+}
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center;
+  padding: 3rem 0;
+  color: #777;
+}
+.sin-resultados h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}

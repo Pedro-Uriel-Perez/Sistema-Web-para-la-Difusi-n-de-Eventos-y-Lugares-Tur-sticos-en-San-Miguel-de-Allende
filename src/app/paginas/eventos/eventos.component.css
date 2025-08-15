@@ -1,0 +1,395 @@
+.eventos {
+  min-height: 100vh;
+}
+
+/* Banner */
+.banner-eventos {
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.banner-eventos h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.banner-eventos p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Contenedor general */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Filtros */
+.seccion-filtros {
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  padding: 0.7rem 1.2rem;
+  border: 2px solid #8B4513;
+  background: white;
+  color: #8B4513;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: #8B4513;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Búsqueda */
+.seccion-busqueda-eventos {
+  padding: 2rem 0;
+  background: white;
+}
+
+.barra-busqueda {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.barra-busqueda input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.barra-busqueda input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.icono-busqueda {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Lista de eventos */
+.lista-eventos {
+  padding: 3rem 0;
+}
+
+.grid-eventos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+/* Tarjetas de eventos */
+.tarjeta-evento {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  border: 1px solid #eee;
+}
+
+.tarjeta-evento:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Imagen del evento */
+.imagen-evento {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagen-evento img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.tarjeta-evento:hover .imagen-evento img {
+  transform: scale(1.05);
+}
+
+.categoria-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(139, 69, 19, 0.9);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.fecha-tag {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Contenido del evento */
+.contenido-evento {
+  padding: 1.5rem;
+}
+
+.header-evento {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.header-evento h3 {
+  color: #333;
+  font-size: 1.3rem;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.precio-evento {
+  text-align: right;
+}
+
+.gratuito {
+  background: #28a745;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.con-precio {
+  background: #D2691E;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.descripcion {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Información del evento */
+.info-evento {
+  margin-bottom: 1rem;
+}
+
+.fecha-horario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.fecha,
+.horario,
+.ubicacion,
+.organizador {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.info-evento .icono {
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+/* Características del evento */
+.caracteristicas-evento {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.caracteristica {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.icono-caracteristica {
+  margin-right: 0.3rem;
+}
+
+/* Acciones */
+.acciones-evento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.btn-ver-mas,
+.btn-contactar,
+.btn-ubicacion,
+.btn-reservar {
+  padding: 0.7rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.btn-ver-mas {
+  background: #8B4513;
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.btn-ver-mas:hover {
+  background: #D2691E;
+}
+
+.btn-contactar {
+  background: #17a2b8;
+  color: white;
+}
+
+.btn-contactar:hover {
+  background: #138496;
+}
+
+.btn-ubicacion {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-ubicacion:hover {
+  background: #5a6268;
+}
+
+.btn-reservar {
+  background: #28a745;
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.btn-reservar:hover {
+  background: #218838;
+}
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.sin-resultados h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner-eventos h1 {
+    font-size: 2rem;
+  }
+  
+  .filtros {
+    gap: 0.5rem;
+  }
+  
+  .filtro-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .grid-eventos {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-evento {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-evento h3 {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .fecha-horario {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  
+  .acciones-evento {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-ver-mas,
+  .btn-reservar {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .tarjeta-evento {
+    margin: 0 0.5rem;
+  }
+  
+  .contenido-evento {
+    padding: 1rem;
+  }
+  
+  .banner-eventos {
+    padding: 2rem 0;
+  }
+  
+  .caracteristicas-evento {
+    gap: 0.4rem;
+  }
+}

@@ -1,0 +1,130 @@
+<div class="atractivos">
+  <!-- Banner de la página -->
+  <section class="banner-atractivos">
+    <div class="contenedor">
+      <h1>Atractivos Turísticos</h1>
+      <p>Descubre los lugares más emblemáticos de San Miguel de Allende</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="seccion-filtros">
+    <div class="contenedor">
+      <div class="filtros">
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'todos'"
+          (click)="filtrarPorCategoria('todos')"
+        >
+          Todos
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'religioso'"
+          (click)="filtrarPorCategoria('religioso')"
+        >
+          Patrimonio Religioso
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'cultural'"
+          (click)="filtrarPorCategoria('cultural')"
+        >
+          Arte y Cultura
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'historico'"
+          (click)="filtrarPorCategoria('historico')"
+        >
+          Histórico
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'natural'"
+          (click)="filtrarPorCategoria('natural')"
+        >
+          Natural
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda específica -->
+  <section class="seccion-busqueda-atractivos">
+    <div class="contenedor">
+      <div class="barra-busqueda">
+        <input 
+          type="text" 
+          placeholder="Buscar atractivos..."
+          [(ngModel)]="busquedaAtractivos"
+          (input)="buscarAtractivos()"
+        >
+        <span class="icono-busqueda">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de atractivos -->
+  <section class="lista-atractivos">
+    <div class="contenedor">
+      <div class="grid-atractivos">
+        <div class="tarjeta-atractivo" *ngFor="let atractivo of atractivosFiltrados">
+          <div class="imagen-atractivo">
+            <img [src]="atractivo.imagen" [alt]="atractivo.nombre">
+            <div class="categoria-tag">{{ atractivo.categoria }}</div>
+          </div>
+          
+          <div class="contenido-atractivo">
+            <h3>{{ atractivo.nombre }}</h3>
+            <p class="descripcion">{{ atractivo.descripcion }}</p>
+            
+            <div class="info-atractivo">
+              <div class="ubicacion">
+                <span class="icono">📍</span>
+                <span>{{ atractivo.ubicacion }}</span>
+              </div>
+              
+              <div class="horarios">
+                <span class="icono">🕒</span>
+                <span>{{ atractivo.horarios }}</span>
+              </div>
+              
+              <div class="precio" *ngIf="atractivo.precio > 0">
+                <span class="icono">💰</span>
+                <span>${{ atractivo.precio }} MXN</span>
+              </div>
+              
+              <div class="precio" *ngIf="atractivo.precio === 0">
+                <span class="icono">✅</span>
+                <span>Entrada gratuita</span>
+              </div>
+            </div>
+            
+            <div class="calificacion-atractivo">
+              <div class="estrellas">
+                <span *ngFor="let estrella of obtenerEstrellas(atractivo.calificacion)">{{ estrella }}</span>
+              </div>
+              <span class="numero-calificacion">{{ atractivo.calificacion }}/5</span>
+            </div>
+            
+            <div class="acciones-atractivo">
+              <button class="btn-ver-mas" (click)="verDetalles(atractivo)">
+                Ver Detalles
+              </button>
+              <button class="btn-direcciones" (click)="verUbicacion(atractivo)">
+                📍 Cómo llegar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="atractivosFiltrados.length === 0">
+        <h3>No se encontraron atractivos</h3>
+        <p>Intenta con otros términos de búsqueda o categorías.</p>
+      </div>
+    </div>
+  </section>
+</div>

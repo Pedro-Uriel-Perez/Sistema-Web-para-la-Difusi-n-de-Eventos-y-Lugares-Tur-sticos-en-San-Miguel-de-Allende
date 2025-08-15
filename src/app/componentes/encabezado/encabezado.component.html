@@ -1,0 +1,39 @@
+<header class="encabezado">
+  <nav class="navegacion">
+    <div class="contenedor-nav">
+      <div class="logo">
+        <a routerLink="/">
+          <h2>🏛️ San Miguel Turismo</h2>
+        </a>
+      </div>
+      <div class="menu" [class.activo]="menuAbierto">
+        <a routerLink="/" class="enlace-nav" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">
+          Inicio
+        </a>
+        <a routerLink="/atractivos" class="enlace-nav" routerLinkActive="activo">
+          Atractivos
+        </a>
+        <a routerLink="/eventos" class="enlace-nav" routerLinkActive="activo">
+          Eventos
+        </a>
+        <a routerLink="/hospedaje" class="enlace-nav" routerLinkActive="activo">
+          Hospedaje
+        </a>
+        <a routerLink="/restaurantes" class="enlace-nav" routerLinkActive="activo">
+          Restaurantes
+        </a>
+        <a routerLink="/rutas" class="enlace-nav" routerLinkActive="activo">
+          Rutas
+        </a>
+        <a routerLink="/contacto" class="enlace-nav" routerLinkActive="activo">
+          Contacto
+        </a>
+      </div>
+      <div class="boton-menu" (click)="alternarMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+</header>

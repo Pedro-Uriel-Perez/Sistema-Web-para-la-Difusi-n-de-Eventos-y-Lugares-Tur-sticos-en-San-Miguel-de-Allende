@@ -1,0 +1,76 @@
+<div class="inicio">
+  <!-- Sección Hero -->
+  <section class="hero">
+    <div class="hero-contenido">
+      <h1>Descubre San Miguel de Allende</h1>
+      <p>Patrimonio Cultural de la Humanidad</p>
+      <button class="boton-principal" routerLink="/atractivos">
+        Explorar Atractivos
+      </button>
+    </div>
+  </section>
+
+  <!-- Búsqueda -->
+  <section class="seccion-busqueda">
+    <div class="contenedor">
+      <div class="caja-busqueda">
+        <input
+          type="text"
+          placeholder="¿Qué quieres descubrir en San Miguel?"
+          [(ngModel)]="busqueda"
+          (keyup.enter)="buscar()"
+        >
+        <button (click)="buscar()">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Atractivos Destacados -->
+  <section class="atractivos-destacados">
+    <div class="contenedor">
+      <h2>Atractivos Imperdibles</h2>
+      <div class="grid-atractivos">
+        <div class="tarjeta-atractivo" *ngFor="let atractivo of atractivosDestacados">
+          <img [src]="atractivo.imagen" [alt]="atractivo.nombre">
+          <div class="contenido-tarjeta">
+            <h3>{{ atractivo.nombre }}</h3>
+            <p>{{ atractivo.descripcion }}</p>
+            <div class="calificacion">
+              <span class="estrellas">★★★★★</span>
+              <span>{{ atractivo.calificacion }}/5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="categorias">
+    <div class="contenedor">
+      <h2>Explora por Categorías</h2>
+      <div class="grid-categorias">
+        <div class="tarjeta-categoria" routerLink="/atractivos">
+          <div class="icono-categoria">🏛️</div>
+          <h3>Atractivos</h3>
+          <p>Descubre lugares históricos y culturales</p>
+        </div>
+        <div class="tarjeta-categoria" routerLink="/eventos">
+          <div class="icono-categoria">🎭</div>
+          <h3>Eventos</h3>
+          <p>Festivales, conciertos y actividades</p>
+        </div>
+        <div class="tarjeta-categoria" routerLink="/hospedaje">
+          <div class="icono-categoria">🏨</div>
+          <h3>Hospedaje</h3>
+          <p>Hoteles boutique y alojamientos únicos</p>
+        </div>
+        <div class="tarjeta-categoria" routerLink="/restaurantes">
+          <div class="icono-categoria">🍽️</div>
+          <h3>Restaurantes</h3>
+          <p>Gastronomía local e internacional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,155 @@
+<div class="hospedaje">
+  <!-- Banner de la página -->
+  <section class="banner-hospedaje">
+    <div class="contenedor">
+      <h1>Hospedaje en San Miguel de Allende</h1>
+      <p>Encuentra el lugar perfecto para tu estadía en esta ciudad mágica</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="seccion-filtros">
+    <div class="contenedor">
+      <div class="filtros">
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'todos'"
+          (click)="filtrarPorCategoria('todos')"
+        >
+          Todos
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'lujo'"
+          (click)="filtrarPorCategoria('lujo')"
+        >
+          Lujo
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'boutique'"
+          (click)="filtrarPorCategoria('boutique')"
+        >
+          Boutique
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'tradicional'"
+          (click)="filtrarPorCategoria('tradicional')"
+        >
+          Tradicional
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'económico'"
+          (click)="filtrarPorCategoria('económico')"
+        >
+          Económico
+        </button>
+        <button 
+          class="filtro-btn"
+          [class.activo]="categoriaSeleccionada === 'hostal'"
+          (click)="filtrarPorCategoria('hostal')"
+        >
+          Hostal
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Búsqueda específica -->
+  <section class="seccion-busqueda-hospedaje">
+    <div class="contenedor">
+      <div class="barra-busqueda">
+        <input 
+          type="text" 
+          placeholder="Buscar hoteles..."
+          [(ngModel)]="busquedaHospedaje"
+          (input)="buscarHospedajes()"
+        >
+        <span class="icono-busqueda">🔍</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de hospedajes -->
+  <section class="lista-hospedajes">
+    <div class="contenedor">
+      <div class="grid-hospedajes">
+        <div class="tarjeta-hospedaje" *ngFor="let hospedaje of hospedajesFiltrados">
+          <div class="imagen-hospedaje">
+            <img [src]="hospedaje.imagen" [alt]="hospedaje.nombre">
+            <div class="categoria-tag">{{ hospedaje.categoria }}</div>
+            <div class="precio-tag">${{ hospedaje.precio }}/noche</div>
+          </div>
+          
+          <div class="contenido-hospedaje">
+            <h3>{{ hospedaje.nombre }}</h3>
+            <p class="descripcion">{{ hospedaje.descripcion }}</p>
+            
+            <div class="info-hospedaje">
+              <div class="ubicacion">
+                <span class="icono">📍</span>
+                <span>{{ hospedaje.ubicacion }}</span>
+              </div>
+              
+              <div class="telefono">
+                <span class="icono">📞</span>
+                <span>{{ hospedaje.telefono }}</span>
+              </div>
+            </div>
+
+            <!-- Servicios incluidos -->
+            <div class="servicios-incluidos">
+              <div class="servicio-item" *ngIf="hospedaje.wifi">
+                <span class="icono-servicio">📶</span>
+                <span>WiFi gratuito</span>
+              </div>
+              <div class="servicio-item" *ngIf="hospedaje.estacionamiento">
+                <span class="icono-servicio">🚗</span>
+                <span>Estacionamiento</span>
+              </div>
+              <div class="servicio-item" *ngIf="hospedaje.desayuno">
+                <span class="icono-servicio">🍳</span>
+                <span>Desayuno incluido</span>
+              </div>
+            </div>
+
+            <!-- Servicios principales -->
+            <div class="servicios-principales">
+              <h4>Servicios:</h4>
+              <ul>
+                <li *ngFor="let servicio of hospedaje.servicios">{{ servicio }}</li>
+              </ul>
+            </div>
+            
+            <div class="calificacion-hospedaje">
+              <div class="estrellas">
+                <span *ngFor="let estrella of obtenerEstrellas(hospedaje.calificacion)">{{ estrella }}</span>
+              </div>
+              <span class="numero-calificacion">{{ hospedaje.calificacion }}/5</span>
+            </div>
+            
+            <div class="acciones-hospedaje">
+              <button class="btn-ver-mas" (click)="verDetalles(hospedaje)">
+                Ver Detalles
+              </button>
+              <button class="btn-llamar" (click)="llamarHotel(hospedaje)">
+                📞 Llamar
+              </button>
+              <button class="btn-reservar" (click)="reservar(hospedaje)">
+                🏨 Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" *ngIf="hospedajesFiltrados.length === 0">
+        <h3>No se encontraron hospedajes</h3>
+        <p>Intenta con otros términos de búsqueda o categorías.</p>
+      </div>
+    </div>
+  </section>
+</div>
